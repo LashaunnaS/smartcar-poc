@@ -92,7 +92,7 @@ const App = (): JSX.Element => {
 
   useEffect(() => {
     if (authCode !== '' && validScope.length > 0 && validScopeAttributes.length === 0) {
-      const fetchRepoInfos = async () => {
+      const fetchScopeAttributes = async () => {
         const promises = validScope.map(async (scope: string) => {
           const response = await axios.get(`${process.env.REACT_APP_SERVER}/${scopeMap[scope].url}`);
 
@@ -107,7 +107,7 @@ const App = (): JSX.Element => {
         return await Promise.all(promises).then((data) => setValidScopeAttributes(data));
       };
 
-      fetchRepoInfos();
+      fetchScopeAttributes();
     };
 
     validScopeAttributes.length > 0 && localStorage.setItem('validScopeAttributes', JSON.stringify(validScopeAttributes));
