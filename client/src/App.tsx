@@ -49,7 +49,7 @@ const App = (): JSX.Element => {
     redirectUri: process.env.REACT_APP_REDIRECT_URI,
     scope: [
       'required:read_vehicle_info',
-      'read_battery',
+      'required:read_battery',
       'read_odometer',
       'read_charge',
       'read_fuel',
