@@ -5,7 +5,6 @@ import smartcar from 'smartcar';
 
 dotenv.config();
 const app = express();
-const PORT = process.env.PORT | 8000;
 
 // global variable to save our accessToken & refreshToken
 let access;
@@ -176,6 +175,6 @@ app.get('/engine/oil', async function (req, res) {
     .end();
 });
 
-app.listen(PORT, () => {
-  console.log(`Smartcar server listening on Port: http://localhost:${port}`);
-});
+const PORT = process.env.PORT | 8000;
+
+app.listen(PORT, () => console.log(`Smartcar server listening on Port: http://localhost:${PORT}/login`));
