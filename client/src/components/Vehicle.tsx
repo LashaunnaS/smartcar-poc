@@ -46,8 +46,13 @@ const Vehicle = ({ scope }: any): JSX.Element => {
 
   return (
     <section className="scope-attribute">
-      {scopeName && <h2>{scopeMap[scopeName].name}</h2>}
-      {scopeName && <div>{renderAttributes(scopeAttributes)}</div>}
+      {scopeName ?
+        <>
+          <h2>{scopeMap[scopeName].name}</h2>
+          <div>{renderAttributes(scopeAttributes)}</div>
+        </> :
+        <h2>Loading...</h2>
+      }
     </section>
   );
 };
