@@ -22,7 +22,7 @@ const client = new smartcar.AuthClient({
 });
 
 // login, and then accept or deny your scope's permissions
-app.get('/', function (req, res) {
+app.get('/login', function (req, res) {
   // Redirect the user to Smartcar Connect using getAuthUrl with required scope or with one of our frontend SDKs.
   const authUrl = client.getAuthUrl([
     'required:read_vehicle_info',
