@@ -9,9 +9,9 @@ const app = express();
 // global variable to save our accessToken & refreshToken
 let access;
 
-app.use(cors({
-  origin: ['http://localhost:3000', 'http://localhost:8000']
-}));
+// app.use(cors({
+//   origin: ['http://localhost:3000', 'http://localhost:8000']
+// }));
 
 // Create a new AuthClient object 
 const client = new smartcar.AuthClient({
@@ -22,7 +22,7 @@ const client = new smartcar.AuthClient({
 });
 
 // login, and then accept or deny your scope's permissions
-app.get('/login', function (req, res) {
+app.get('/', function (req, res) {
   // Redirect the user to Smartcar Connect using getAuthUrl with required scope or with one of our frontend SDKs.
   const authUrl = client.getAuthUrl([
     'required:read_vehicle_info',
@@ -177,4 +177,4 @@ app.get('/engine/oil', async function (req, res) {
 
 const PORT = process.env.PORT | 8000;
 
-app.listen(PORT, () => console.log(`Smartcar server listening on Port: http://localhost:${PORT}/login`));
+app.listen(PORT, () => console.log(`Smartcar server listening on Port: http://localhost:${PORT}/`));
