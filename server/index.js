@@ -9,9 +9,9 @@ const app = express();
 // global variable to save our accessToken & refreshToken
 let access;
 
-// app.use(cors({
-//   origin: ['http://localhost:3000', 'http://localhost:8000']
-// }));
+app.use(cors({
+  origin: ['http://localhost:3000', 'https://smartcar-poc-client.vercel.app/', 'http://localhost:8000', 'https://smartcar-poc-server.vercel.app/']
+}));
 
 // Create a new AuthClient object 
 const client = new smartcar.AuthClient({
