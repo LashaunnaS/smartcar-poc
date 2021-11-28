@@ -39,6 +39,12 @@ app.get('/login', function (req, res) {
     'read_engine_oil'
   ]);
 
+  response.set({
+    'Access-Control-Allow-Origin': [
+      'https://smartcar-poc-client.vercel.app',
+      'https://smartcar-poc-server.vercel.app'
+    ]
+  });
   res.redirect(authUrl);
 });
 
