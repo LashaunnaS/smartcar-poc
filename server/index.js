@@ -8,7 +8,7 @@ const app = express();
 
 // global variable to save our accessToken & refreshToken
 let access;
-
+app.use(cors());
 // app.use(cors({
 //   origin: [
 //     'http://localhost:3000',
