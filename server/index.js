@@ -52,6 +52,12 @@ app.get('/exchange', async function (req, res) {
   const code = req.query.code;
   // in a production app you'll want to store this in some kind of persistent storage
   access = await client.exchangeCode(code);
+  response.set({
+    'Access-Control-Allow-Origin': [
+      'https://smartcar-poc-client.vercel.app',
+      'https://smartcar-poc-server.vercel.app'
+    ]
+  });
   res.redirect('/permissions');
 });
 
