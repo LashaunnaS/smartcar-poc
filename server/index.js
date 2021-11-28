@@ -19,7 +19,7 @@ app.use(cors());
 // }));
 
 const corsOptions = {
-  origin: 'https://smartcar-poc-client.vercel.app',
+  origin: 'https://smartcar-poc-server.vercel.app',
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
 
