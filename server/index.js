@@ -9,7 +9,19 @@ const app = express();
 // global variable to save our accessToken & refreshToken
 let access;
 
-app.use(cors());
+// app.use(cors({
+//   origin: [
+//     'http://localhost:3000',
+//     'https://smartcar-poc-client.vercel.app',
+//     'http://localhost:8000',
+//     'https://smartcar-poc-server.vercel.app/'
+//   ]
+// }));
+
+const corsOptions = {
+  origin: 'https://smartcar-poc-client.vercel.app',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+};
 
 // Create a new AuthClient object 
 const client = new smartcar.AuthClient({
@@ -35,7 +47,7 @@ app.get('/login', function (req, res) {
   res.redirect(authUrl);
 });
 
-app.get('/exchange', async function (req, res) {
+app.get('/exchange', cors(corsOptions), async function (req, res) {
   const code = req.query.code;
   // in a production app you'll want to store this in some kind of persistent storage
   access = await client.exchangeCode(code);
