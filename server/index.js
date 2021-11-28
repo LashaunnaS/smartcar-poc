@@ -9,14 +9,7 @@ const app = express();
 // global variable to save our accessToken & refreshToken
 let access;
 
-app.use(cors({
-  origin: [
-    'http://localhost:3000',
-    'https://smartcar-poc-client.vercel.app',
-    'http://localhost:8000',
-    'https://smartcar-poc-server.vercel.app'
-  ]
-}));
+app.use(cors());
 
 // Create a new AuthClient object 
 const client = new smartcar.AuthClient({
@@ -39,12 +32,6 @@ app.get('/login', function (req, res) {
     'read_engine_oil'
   ]);
 
-  response.set({
-    'Access-Control-Allow-Origin': [
-      'https://smartcar-poc-client.vercel.app',
-      'https://smartcar-poc-server.vercel.app'
-    ]
-  });
   res.redirect(authUrl);
 });
 
@@ -52,12 +39,6 @@ app.get('/exchange', async function (req, res) {
   const code = req.query.code;
   // in a production app you'll want to store this in some kind of persistent storage
   access = await client.exchangeCode(code);
-  response.set({
-    'Access-Control-Allow-Origin': [
-      'https://smartcar-poc-client.vercel.app',
-      'https://smartcar-poc-server.vercel.app'
-    ]
-  });
   res.redirect('/permissions');
 });
 
